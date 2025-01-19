@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Canteen</h1>
+<div class="row">
+    {% for Canteen in Canteen %}
+        <div class="col-md-3 mb-3"> <!-- Adjust the column width as needed (e.g., col-md-3 for 4 cards per row) -->
+            <div class="card" > 
+                <img src="{{ Canteen.image }}" class="card-img-top" alt="{{ Canteen.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ Canteen.name }}</h5>
+                    <p class="card-text">₹{{ Canteen.price }}</p>
+                    <a href="{% url 'add-to-cart' Canteen.id %}" class="btn btn-primary">Add to cart</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
